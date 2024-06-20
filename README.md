@@ -16,7 +16,8 @@ npx expo install @react-native-masked-view/masked-view expo-linear-gradient expo
 
 ## Demo
 
-<video src="./demo.mp4" width="910" height="540" controls></video>
+https://github.com/bricezele/React-Native-Gradient-Blur/assets/14944418/52337a7b-1d78-44e4-9c55-12b1f0bf7516
+
 
 ## Join me
 
