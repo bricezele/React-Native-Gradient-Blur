@@ -1,4 +1,4 @@
-import {Image, ImageBackground, StyleSheet, Text, useWindowDimensions, View} from "react-native";
+import {Image, ImageBackground, Platform, StyleSheet, Text, useWindowDimensions, View} from "react-native";
 import {easeGradient} from "react-native-easing-gradient";
 import MaskedView from "@react-native-masked-view/masked-view";
 import {LinearGradient} from "expo-linear-gradient";
@@ -12,7 +12,7 @@ export default function Index() {
                 color: 'transparent',
             },
             0.5: {
-                color: 'rgba(0,0,0,0.9)',
+                color: 'rgba(0,0,0,0.99)',
             },
             1: {
                 color: 'black',
@@ -25,13 +25,7 @@ export default function Index() {
     >
       <Image source={{uri: 'https://cdn.pixabay.com/photo/2020/05/29/08/54/beach-5234306_640.jpg'}} resizeMode='cover' style={{width, height}} />
       <View
-          style={{
-              position: 'absolute',
-              bottom: 0,
-              width,
-              height: height / 2,
-              zIndex: 2,
-          }}>
+          style={[styles.blurContainer, {width, height: height / 2}]}>
           <MaskedView
               maskElement={
                   <LinearGradient
@@ -41,8 +35,9 @@ export default function Index() {
                   />
               }
               style={[StyleSheet.absoluteFill]}>
-              <BlurView intensity={100} tint='systemChromeMaterialDark'  style={[StyleSheet.absoluteFill]} />
+              <BlurView intensity={100} tint={Platform.OS === 'ios' ? 'systemChromeMaterialDark' : 'systemMaterialDark'}  style={[StyleSheet.absoluteFill]} />
           </MaskedView>
+
       </View>
     </View>
   );
@@ -51,6 +46,11 @@ export default function Index() {
 const styles = StyleSheet.create({
     container: {
         flex: 1
+    },
+    blurContainer: {
+        position: 'absolute',
+        bottom: 0,
+        zIndex: 2,
     },
     blur: {
         bottom: 0,
