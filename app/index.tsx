@@ -1,11 +1,28 @@
-import {Image, ImageBackground, Platform, StyleSheet, Text, useWindowDimensions, View} from "react-native";
+import {Image, Platform, StyleSheet, Text, useWindowDimensions, View} from "react-native";
 import {easeGradient} from "react-native-easing-gradient";
 import MaskedView from "@react-native-masked-view/masked-view";
 import {LinearGradient} from "expo-linear-gradient";
 import {BlurView} from "expo-blur";
+import Animated, {
+    interpolate,
+    useAnimatedScrollHandler,
+    useAnimatedStyle,
+    useSharedValue
+} from "react-native-reanimated";
 
 export default function Index() {
     const {width, height} = useWindowDimensions()
+    // PARALLAX SCROLL
+    const scrollY = useSharedValue(0)
+    const onScroll = useAnimatedScrollHandler({
+        onScroll: ({ contentOffset: { y } }) => {
+            scrollY.value = -y;
+        },
+    })
+    const imageContainerStyle = useAnimatedStyle(() => ({
+        transform: [{scale: interpolate(scrollY.value, [0, height], [1, 2])}]
+    }))
+    // LINEAR GRADIENT
     const { colors: colorsGradientIos, locations: locationIos } = easeGradient({
         colorStops: {
             0: {
@@ -23,7 +40,10 @@ export default function Index() {
     <View
       style={styles.container}
     >
-      <Image source={{uri: 'https://cdn.pixabay.com/photo/2020/05/29/08/54/beach-5234306_640.jpg'}} resizeMode='cover' style={{width, height}} />
+      <Animated.ScrollView scrollEventThrottle={16} onScroll={onScroll} style={[StyleSheet.absoluteFill, {zIndex: 3}]} />
+        <Animated.View style={[styles.container, imageContainerStyle]}>
+            <Image source={{uri: 'https://c4.wallpaperflare.com/wallpaper/894/228/1004/ios-ipod-ipad-iphone-wallpaper-preview.jpg'}} resizeMode='cover' style={{width, height}} />
+        </Animated.View>
       <View
           style={[styles.blurContainer, {width, height: height / 2}]}>
           <MaskedView
@@ -37,7 +57,9 @@ export default function Index() {
               style={[StyleSheet.absoluteFill]}>
               <BlurView intensity={100} tint={Platform.OS === 'ios' ? 'systemChromeMaterialDark' : 'systemMaterialDark'}  style={[StyleSheet.absoluteFill]} />
           </MaskedView>
-
+          <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
+              <Text style={{color: 'white', fontSize: 40, fontWeight: 'bold'}}>Hello World</Text>
+          </View>
       </View>
     </View>
   );
