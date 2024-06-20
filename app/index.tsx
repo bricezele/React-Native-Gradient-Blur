@@ -40,7 +40,9 @@ export default function Index() {
     <View
       style={styles.container}
     >
-      <Animated.ScrollView scrollEventThrottle={16} onScroll={onScroll} style={[StyleSheet.absoluteFill, {zIndex: 3}]} />
+      <Animated.ScrollView scrollEventThrottle={16}
+                           onScroll={onScroll}
+                           style={[StyleSheet.absoluteFill, {zIndex: 3}]} />
         <Animated.View style={[styles.container, imageContainerStyle]}>
             <Image source={{uri: 'https://c4.wallpaperflare.com/wallpaper/894/228/1004/ios-ipod-ipad-iphone-wallpaper-preview.jpg'}} resizeMode='cover' style={{width, height}} />
         </Animated.View>
@@ -55,10 +57,12 @@ export default function Index() {
                   />
               }
               style={[StyleSheet.absoluteFill]}>
-              <BlurView intensity={100} tint={Platform.OS === 'ios' ? 'systemChromeMaterialDark' : 'systemMaterialDark'}  style={[StyleSheet.absoluteFill]} />
+              <BlurView intensity={100}
+                        tint={Platform.OS === 'ios' ? 'systemChromeMaterialDark' : 'systemMaterialDark'}
+                        style={[StyleSheet.absoluteFill]} />
           </MaskedView>
-          <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
-              <Text style={{color: 'white', fontSize: 40, fontWeight: 'bold'}}>Hello World</Text>
+          <View style={styles.textContainer}>
+              <Text style={styles.text}>Hello World</Text>
           </View>
       </View>
     </View>
@@ -84,4 +88,14 @@ const styles = StyleSheet.create({
         bottom: 0,
         position: 'absolute',
     },
+    textContainer: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        flex: 1
+    },
+    text: {
+        color: 'white',
+        fontSize: 40,
+        fontWeight: 'bold'
+    }
 })
