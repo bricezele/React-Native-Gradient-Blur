@@ -6,7 +6,7 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 
 This project demonstrates how to create a gradient blur effect using React Native and several libraries, including `@react-native-masked-view/masked-view`, `expo-linear-gradient`, `react-native-easing-gradient`, and `expo-blur`.
 
-## Installation
+## Prerequisites
 
 Before you start, make sure you have the necessary libraries installed. You can install them using the following commands:
 
