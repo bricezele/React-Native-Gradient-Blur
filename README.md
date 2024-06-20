@@ -1,50 +1,24 @@
-# Welcome to your Expo app 👋
+# React Native Gradient Blur 👋
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
-## Get started
+# Gradient Blur Project
 
-1. Install dependencies
+This project demonstrates how to create a gradient blur effect using React Native and several libraries, including `@react-native-masked-view/masked-view`, `expo-linear-gradient`, `react-native-easing-gradient`, and `expo-blur`.
 
-   ```bash
-   npm install
-   ```
+## Installation
 
-2. Start the app
+Before you start, make sure you have the necessary libraries installed. You can install them using the following commands:
 
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```sh
+npx expo install @react-native-masked-view/masked-view expo-linear-gradient expo-blur react-native-easing-gradient
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Demo
 
-## Learn more
+<video src="./demo.mp4" width="910" height="540" controls></video>
 
-To learn more about developing your project with Expo, look at the following resources:
+## Join me
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- [Twitter](https://x.com/BriceZele)
+- [Linkedin](https://www.linkedin.com/in/brice-zele/): Chat with Expo users and ask questions.

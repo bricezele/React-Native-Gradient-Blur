@@ -23,50 +23,42 @@ export default function Index() {
         transform: [{scale: interpolate(scrollY.value, [0, height], [1, 2])}]
     }))
     // LINEAR GRADIENT
-    const { colors: colorsGradientIos, locations: locationIos } = easeGradient({
-        colorStops: {
-            0: {
-                color: 'transparent',
-            },
-            0.5: {
-                color: 'rgba(0,0,0,0.99)',
-            },
-            1: {
-                color: 'black',
-            },
-        },
+    const { colors, locations } = easeGradient({
+        colorStops: {0: {color: 'transparent'},0.5: {color: 'rgba(0,0,0,0.99)'}, 1: {color: 'black'}},
     })
-  return (
-    <View
-      style={styles.container}
-    >
-      <Animated.ScrollView scrollEventThrottle={16}
-                           onScroll={onScroll}
-                           style={[StyleSheet.absoluteFill, {zIndex: 3}]} />
-        <Animated.View style={[styles.container, imageContainerStyle]}>
-            <Image source={{uri: 'https://c4.wallpaperflare.com/wallpaper/894/228/1004/ios-ipod-ipad-iphone-wallpaper-preview.jpg'}} resizeMode='cover' style={{width, height}} />
-        </Animated.View>
-      <View
-          style={[styles.blurContainer, {width, height: height / 2}]}>
-          <MaskedView
-              maskElement={
-                  <LinearGradient
-                      locations={locationIos}
-                      colors={colorsGradientIos}
-                      style={StyleSheet.absoluteFill}
-                  />
-              }
-              style={[StyleSheet.absoluteFill]}>
-              <BlurView intensity={100}
-                        tint={Platform.OS === 'ios' ? 'systemChromeMaterialDark' : 'systemMaterialDark'}
-                        style={[StyleSheet.absoluteFill]} />
-          </MaskedView>
-          <View style={styles.textContainer}>
-              <Text style={styles.text}>Hello World</Text>
-          </View>
-      </View>
-    </View>
-  );
+    return (
+        <View
+            style={styles.container}
+        >
+            <Animated.ScrollView scrollEventThrottle={16}
+                                 onScroll={onScroll}
+                                 style={[StyleSheet.absoluteFill, {zIndex: 3}]} />
+            <Animated.View style={[styles.container, imageContainerStyle]}>
+                <Image source={{uri: 'https://c4.wallpaperflare.com/wallpaper/894/228/1004/ios-ipod-ipad-iphone-wallpaper-preview.jpg'}}
+                       resizeMode='cover'
+                       style={{width, height}} />
+            </Animated.View>
+            <View
+                style={[styles.blurContainer, {width, height: height / 2}]}>
+                <MaskedView
+                    maskElement={
+                        <LinearGradient
+                            locations={locations}
+                            colors={colors}
+                            style={StyleSheet.absoluteFill}
+                        />
+                    }
+                    style={[StyleSheet.absoluteFill]}>
+                    <BlurView intensity={100}
+                              tint={Platform.OS === 'ios' ? 'systemChromeMaterialDark' : 'systemMaterialDark'}
+                              style={[StyleSheet.absoluteFill]} />
+                </MaskedView>
+                <View style={styles.textContainer}>
+                    <Text style={styles.text}>Hello World</Text>
+                </View>
+            </View>
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({
@@ -77,12 +69,6 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 0,
         zIndex: 2,
-    },
-    blur: {
-        bottom: 0,
-        position: 'absolute',
-        zIndex: 1,
-        opacity: 0.9
     },
     linearGradient: {
         bottom: 0,
